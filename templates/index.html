@@ -1,24 +1,59 @@
 <!DOCTYPE html>
-<html>
-<form class="d-flex" method="GET" action="{% url 'timeline' %}">
-    <input class="form-control me-2" type="search" placeholder="検索" name="q">
-    <button class="btn btn-outline-success" type="submit">検索</button>
-</form>
-
+<html lang="zh-CN">
 <head>
-    <title>テンプレートのテスト</title>
+<meta charset="UTF-8">
+<title>首页</title>
+<style>
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    background: #f5f6fa;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #2b7fff;
+    margin-top: 60px;
+}
+.section {
+    margin: 40px 0;
+}
+button {
+    background: #2b7fff;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s;
+}
+button:hover {
+    background: #1a5fd3;
+    transform: scale(1.05);
+}
+</style>
 </head>
-
 <body>
-    <h1>{{ title }}</h1>
-    <p>{{ message }}</p>
+    <h1>語彙データベースを選んでください</h1>
 
-    <h2>好きな食べ物リスト</h2>
-    <ul>
-        {% for food in food_list %}
-        <li>{{ food }}</li>
+    <div class="section">
+        {% for d in dicts %}
+        <a href="/learn/?dict={{ d.id }}"><button>{{ d.name }}</button></a>
         {% endfor %}
-    </ul>
-</body>
+    </div>
 
+    <div class="section">
+        <a href="/quiz_select/"><button>クイズ</button></a>
+        <a href="/stats/"><button>学習統計</button></a>
+    </div>
+
+    {% if history %}
+    <div class="section" style="color:#555;">
+        📖 ヒストリー：{{ history.dict }} ｜  {{ history.page }} ページ  
+        <a href="/learn?dict={{ history.dict }}&page={{ history.page }}&size={{ history.size }}"><button>学習続け</button></a>
+    </div>
+    {% endif %}
+</body>
 </html>

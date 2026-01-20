@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>クイズ</title>
+<style>
+body{font-family:"Microsoft YaHei",sans-serif;background:#f5f6fa;text-align:center;margin:0}
+h1{color:#2b7fff;margin-top:30px}
+.q{background:#fff;max-width:900px;margin:18px auto;padding:18px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,.1);text-align:left}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+input[type="radio"]{display:none}
+label.choice{display:block;border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;background:#fafafa;transition:.2s;cursor:pointer;user-select:none}
+input[type="radio"]:checked + label.choice{background:#2b7fff;color:#fff;border-color:#2b7fff}
+label.choice:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.08)}
+button{background:#2b7fff;color:#fff;border:0;padding:10px 20px;border-radius:8px;margin:12px;font-size:15px;cursor:pointer}
+button:hover{background:#1a5fd3}
+</style>
+</head>
+<body>
+<h1>クイズ（{{ dict_name }}）</h1>
+
+<form method="post" action="/quiz/">
+    {% csrf_token %}
+    <input type="hidden" name="dict" value="{{ dict_name }}">
+    <input type="hidden" name="size" value="{{ size }}">
+    <input type="hidden" name="qcount" value="{{ items|length }}">
+
+    {% for it in items %}
+    <div class="q">
+        <fieldset>
+            <legend><b>Q{{ forloop.counter }}. {{ it.word }}</b></legend>
+            <input type="hidden" name="word{{ forloop.counter0 }}" value="{{ it.word }}">
+            <input type="hidden" name="right{{ forloop.counter0 }}" value="{{ it.right }}">
+
+            <div class="choices">
+                {% for opt in it.options %}
+                <input type="radio"
+                       id="q{{ forloop.parentloop.counter0 }}_opt{{ forloop.counter0 }}"
+                       name="q{{ forloop.parentloop.counter0 }}"
+                       value="{{ opt }}"
+                       required>
+                <label class="choice" for="q{{ forloop.parentloop.counter0 }}_opt{{ forloop.counter0 }}">{{ opt }}</label>
+                {% endfor %}
+            </div>
+        </fieldset>
+    </div>
+    {% endfor %}
+
+    <button type="submit">提出</button>
+</form>
+
+</body>
+</html>

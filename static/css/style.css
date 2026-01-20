@@ -1,0 +1,66 @@
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    text-align: center;
+    margin-top: 40px;
+    background-color: #f5f6fa;
+}
+h1 {
+    color: #2b7fff;
+}
+button {
+    background-color: #2b7fff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+button:hover {
+    background-color: #1a5fd3;
+}
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 80%;
+}
+th {
+    background-color: #2b7fff;
+    color: white;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.card {
+    width: 240px;
+    height: 160px;
+    perspective: 1000px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, z-index 0s linear 0.3s;
+
+}
+
+.card:hover {
+    transform: scale(1.5);
+    z-index: 10;
+    transition: transform 0.3s ease, z-index 0s linear 0s;
+
+}
+.choice {
+  display: block;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 5px 0;
+  background: #fafafa;
+  transition: 0.2s;
+  cursor: pointer;
+}
+input[type="radio"]:checked + label {
+  background: #2b7fff;
+  color: white;
+  border-color: #2b7fff;
+}

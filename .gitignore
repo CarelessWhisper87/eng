@@ -1,1 +1,6 @@
-https://github.co.jp/
+.env
+venv/
+__pycache__/
+*.pyc
+db.sqlite3
+staticfiles/

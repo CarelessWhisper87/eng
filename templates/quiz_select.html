@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>語彙データベースを選んでください</title>
+<style>
+body{font-family:"Microsoft YaHei",sans-serif;background:#f5f6fa;text-align:center;margin:0;padding-top:100px}
+h1{color:#2b7fff;margin-bottom:40px}
+button{background:#2b7fff;color:#fff;border:none;padding:14px 28px;border-radius:10px;margin:10px;font-size:16px;cursor:pointer;transition:.2s}
+button:hover{background:#1a5fd3;transform:scale(1.05)}
+</style>
+</head>
+<body>
+    <h1>語彙データベースを選んでください</h1>
+    {% for d in dicts %}
+    <a href="/quiz/?dict={{ d.id }}"><button>{{ d.name }}</button></a>
+    {% endfor %}
+    <br><br>
+    <a href="/home/"><button style="background:#777;">ホームページ</button></a>
+</body>
+</html>

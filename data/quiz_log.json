@@ -1,0 +1,23 @@
+[
+  {
+    "dict_name": "cet6",
+    "total": 10,
+    "correct": 3,
+    "score": 30,
+    "created_at": "2026-01-20 15:27:33"
+  },
+  {
+    "dict_name": "cet4",
+    "total": 10,
+    "correct": 4,
+    "score": 40,
+    "created_at": "2026-01-20 15:28:00"
+  },
+  {
+    "dict_name": "cet4",
+    "total": 10,
+    "correct": 2,
+    "score": 20,
+    "created_at": "2026-01-20 15:28:37"
+  }
+]
